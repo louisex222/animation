@@ -1,0 +1,229 @@
+    // $padding:11.9vw;
+    .container {
+        padding-left: 11.5625vw;
+        padding-right: 11.5625vw;
+    }
+    /* /////////////////////// common start //////////////////// */
+    
+    .cir_1 {
+        width: 15.6vw;
+        height: 15.6vw;
+        border-radius: 50%;
+        background-color: #e84644;
+        opacity: 0.9;
+    }
+    
+    .cir_2 {
+        width: 15.6vw;
+        height: 15.6vw;
+        border-radius: 50%;
+        background-color: #e84644;
+        opacity: 0.3;
+    }
+    
+    .cir_3 {
+        width: 15.6vw;
+        height: 15.6vw;
+        border-radius: 50%;
+        border: 1px solid #e84644;
+        opacity: 0.3;
+        position: relative;
+        &::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            right: 10px;
+            left: 10px;
+            border-radius: 50%;
+            border: 1px solid #e84644;
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            bottom: 20px;
+            right: 20px;
+            left: 20px;
+            border-radius: 50%;
+            border: 1px solid #e84644;
+        }
+    }
+    
+    // 瞭解更多
+    .more_btn {
+        font-size: calc(18 / 1920 * 100vw);
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+    }
+    
+    // @media(max-width:1500px) {
+    //     .container {
+    //         padding: 0 13.22vw;
+    //     }
+    // }
+    @media (max-width:1100px) {
+        .container {
+            padding: 0 13.22vw;
+        }
+        .more_btn {
+            font-size: calc(18 / 1100 * 100vw);
+        }
+    }
+    
+    @media (max-width:700px) {
+        .more_btn {
+            font-size: 14px;
+        }
+    }
+    /* /////////////////////// common end //////////////////// */
+
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote {
+
+    &:before,
+    &:after {
+        content: "";
+        content: none;
+    }
+}
+
+q {
+
+    &:before,
+    &:after {
+        content: "";
+        content: none;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+}
+*{
+    line-height: 1.15;
+}

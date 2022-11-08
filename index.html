@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Heebo (300/400/700)-->
+
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Swiper -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.3.8/css/swiper.min.css"
+      integrity="sha256-3qPC1msGee4ttnohwKQ08+FNasiirwaHenERUfwytW0="
+      crossorigin="anonymous"
+    />
+    <!-- Swiper -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.3.8/js/swiper.min.js"
+      integrity="sha256-MbmmRTDKmXtrzBXtkzpnesuGWf09dcb1RzZle79pwY4="
+      crossorigin="anonymous"
+    ></script>
+    <!-- gsap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  </head>
+  <body>
+    <link rel="stylesheet" href="./css/02.css" />
+    <div class="interior01-template-02">
+      <div class="left">
+        <!-- 左圖 size 960*1050 -->
+        <img src="../img/bg0.jpeg" class="img" alt="" />
+        <div class="color"></div>
+      </div>
+      <div class="circle_wrap1">
+        <div class="cir_2"></div>
+        <div class="cir_1"></div>
+      </div>
+      <div class="imagery">
+        <img src="../img/rx.png" alt="" />
+      </div>
+      <div class="circle_wrap2">
+        <div class="cir_2"></div>
+        <div class="cir_3"></div>
+      </div>
+      <div class="scroll_down">
+        <p>scroll down</p>
+      </div>
+      <!-- 輪播 -->
+      <div class="swiper-container t2_swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="text_wrap">
+              <div>
+                <div class="title">Passion for<br> Building DESIGN</div>
+                <div class="sec_title">建築熱忱，創造價值</div>
+              </div>
+              <a class="more_btn" href="javascript:void(0)"
+                >了解更多
+                <div class="icon"></div
+              ></a>
+            </div>
+            <div class="img_wrap">
+              <!-- 輪播圖 size 960*1345 -->
+              <img src="../img/bg1.jpeg" alt="" class="img" />
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="text_wrap">
+              <div>
+                <div class="title">Passion for Building DESIGN</div>
+                <div class="sec_title">建築熱忱，創造價值</div>
+              </div>
+              <a class="more_btn" href="javascript:void(0)"
+                >了解更多
+                <div class="icon"></div
+              ></a>
+            </div>
+            <div class="img_wrap">
+              <img src="../img/bg1.jpeg" alt="" class="img" />
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="text_wrap">
+              <div>
+                <div class="title">Passion for Building DESIGN</div>
+                <div class="sec_title">建築熱忱，創造價值</div>
+              </div>
+              <a class="more_btn" href="javascript:void(0)"
+                >了解更多
+                <div class="icon"></div
+              ></a>
+            </div>
+            <div class="img_wrap">
+              <img src="../img/bg1.jpeg" alt="" class="img" />
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="vline line1"></div>
+    </div>
+    <script>
+      ;(function () {
+        let scroll = document.querySelector(
+          '.interior01-template-02 .scroll_down'
+        )
+        scroll.addEventListener('click', function () {
+          let win_width = window.innerWidth
+          window.scroll({
+            top: win_width * 0.7,
+            behavior: 'smooth'
+          })
+        })
+        var type = 'fraction'
+        var direction = 'vertical'
+        if (window.innerWidth <= 700) {
+          type = 'bullets'
+          direction = 'horizontal'
+        }
+        var swiper2 = new Swiper('.interior01-template-02 .t2_swiper', {
+          direction: direction,
+          slidesPerView: 1,
+          speed: 1000,
+          autoplay: {
+            delay: 3000
+          },
+          pagination: {
+            el: '.interior01-template-02 .swiper-pagination',
+            type: type,
+            clickable: true,
+            renderFraction: function (currentClass, totalClass) {
+              return `<span class="${totalClass}"></span><span class="line"></span><span class="${currentClass}"></span>`
+            }
+          }
+        })
+        var pagination = document.querySelector(
+          '.interior01-template-02 .swiper-pagination'
+        )
+        if (swiper2.slides.length < 2) {
+          swiper2.destroy()
+          pagination.style.display = 'none'
+        }
+
+        let t2 = gsap.timeline()
+        t2.fromTo(
+          '.interior01-template-02 .swiper-pagination',
+          {
+            y: 100,
+            opacity: 0
+          },
+          {
+            y: 0,
+            opacity: 1,
+            ease: 'ease',
+            duration: 1.2
+          },
+          0
+        )
+          .fromTo(
+            '.interior01-template-02 .circle_wrap1',
+            {
+              y: 100,
+              opacity: 0
+            },
+            {
+              y: 0,
+              opacity: 1,
+              ease: 'ease',
+              duration: 1.2
+            },
+            0
+          )
+          .fromTo(
+            '.interior01-template-02 .color',
+            {
+              y: 100,
+              opacity: 0
+            },
+            {
+              y: 0,
+              opacity: 1,
+              ease: 'ease',
+              duration: 1.2
+            },
+            0
+          )
+          .fromTo(
+            '.interior01-template-02 .imagery',
+            {
+              y: 100,
+              opacity: 0
+            },
+            {
+              y: 0,
+              opacity: 1,
+              ease: 'ease',
+              duration: 1.2
+            },
+            0.3
+          )
+          .fromTo(
+            '.interior01-template-02 .circle_wrap2',
+            {
+              y: 100,
+              opacity: 0
+            },
+            {
+              y: 0,
+              opacity: 1,
+              ease: 'ease',
+              duration: 1.2
+            },
+            0.4
+          )
+
+        let t2_move = gsap.timeline({
+          scrollTrigger: {
+            trigger: '.interior01-template-02',
+            toggleActions: 'play complete restart reset',
+            scrub: true,
+            end: '90%'
+          }
+        })
+        t2_move
+          .fromTo(
+            '.interior01-template-02 .imagery',
+            {
+              y: -200
+            },
+            {
+              y: 0,
+              ease: 'ease'
+            },
+            0
+          )
+          .fromTo(
+            '.interior01-template-02 .circle_wrap1',
+            {
+              y: -200
+            },
+            {
+              y: 0,
+              ease: 'ease'
+            },
+            0
+          )
+          .fromTo(
+            '.interior01-template-02 .circle_wrap2',
+            {
+              y: -200
+            },
+            {
+              y: 0,
+              ease: 'ease'
+            },
+            0
+          )
+        let template = document.querySelector('.interior01-template-02')
+        if (window.innerWidth < 700) {
+          template.classList.add('mobile')
+        } else {
+          template.classList.remove('mobile')
+        }
+        let t2_move_mobile = gsap.timeline({
+          scrollTrigger: {
+            trigger: '.interior01-template-02.mobile',
+            toggleActions: 'play complete restart reset',
+            scrub: true,
+            end: '90%'
+          }
+        })
+        t2_move_mobile
+          .fromTo(
+            '.interior01-template-02.mobile .imagery',
+            {
+              y: -100
+            },
+            {
+              y: 0,
+              ease: 'ease'
+            },
+            0
+          )
+          .fromTo(
+            '.interior01-template-02.mobile .circle_wrap1',
+            {
+              y: -100
+            },
+            {
+              y: 0,
+              ease: 'ease'
+            },
+            0
+          )
+          .fromTo(
+            '.interior01-template-02.mobile .circle_wrap2',
+            {
+              y: -100
+            },
+            {
+              y: 0,
+              ease: 'ease'
+            },
+            0
+          )
+      })()
+    </script>
+    <link rel="stylesheet" href="./css/03.css" />
+
+<div class="interior01-template-03 " style="background-image: url('https://picsum.photos/1920/865/?random=1');">
+    <!-- 背景 size 1920*865 -->
+    <!-- <img src="https://picsum.photos/1920/865/?random=1" alt="" class="bg"> -->
+    <!-- 手機背景 size 700*1200 -->
+    <!-- <img src="https://picsum.photos/700/1200/?random=1" alt="" class="bg_mobile"> -->
+    <div class="container">
+        <div class="title_wrap">
+            <div class="tit">Who we are</div>
+            <div class="sec_tit">關於睿壐設計</div>
+        </div>
+    </div>
+    <div class="run_text">
+        <div>Spatial flow balance</div>
+    </div>
+    <div class="text_wrap">
+        <div class="text">睿壐設計企業使命</div>
+        <p>
+            隨著時代的變化,睿璽團隊在於設計上的充實,日新月異且精益求精、不論設計的細項,規劃每一個設計案是我們的用心,期許傳達原創的設計理念及互動滿通後的具體成果面對各種業主的難題,解讀業主需求本質,規劃設計細節及掌控預算執行,為設計創造最高附加價值。
+        </p>
+        <a class="more_btn" href="javascript:void(0)">了解更多 <div class="icon"></div></a>
+    </div>
+    <div class="vline line1"></div>
+    <div class="vline line2"></div>
+    <div class="vline line3"></div>
+
+
+</div>
+<script>
+    (function() {
+        let t3 = gsap.timeline()
+        t3.fromTo('.interior01-template-03 .title_wrap', {
+            y: 100,
+            opacity: 0,
+        }, {
+            y: 0,
+            opacity: 1,
+            ease: "ease",
+            duration: 1.2,
+        })
+
+        .fromTo('.interior01-template-03 .text_wrap .text', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: "ease",
+                duration: 1.2,
+            }, 0.3)
+            .fromTo('.interior01-template-03 .text_wrap p', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: "ease",
+                duration: 1.2,
+            }, 0.4)
+            .fromTo('.interior01-template-03 .text_wrap .more_btn', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: "ease",
+                duration: 1.2,
+            }, 0.5)
+
+
+        ScrollTrigger.create({
+            animation: t3,
+            trigger: '.interior01-template-03',
+            toggleActions: 'play complete restart reset',
+            start: 'top 80%',
+        })
+        let t3_move = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.interior01-template-03',
+                toggleActions: 'play complete restart reset',
+                scrub: true,
+                end: '20%',
+
+            }
+        })
+        t3_move.fromTo('.interior01-template-03 .run_text', {
+            x: -200
+        }, {
+            x: 0,
+            ease: 'ease'
+        })
+
+
+    })()
+</script>
+
+<link rel="stylesheet" href="./css/04.css">
+<div class="interior01-template-04">
+    <!-- 背景 size 1920*300 -->
+    <!-- <img src="https://picsum.photos/1920/300/?random=1" alt="" class="bg"> -->
+    <!-- 手機背景 size 700*1200 -->
+    <!-- <img src="https://picsum.photos/700/1200/?random=1" alt="" class="bg_mobile"> -->
+    <div class="into_logo">
+        <div class="swiper-container t4_swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="javascript:void(0)">
+                        <img src="../img/t04_brand1.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:void(0)">
+                        <img src="../img/t04_brand2.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:void(0)">
+                        <img src="../img/t04_brand3.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:void(0)">
+                        <img src="../img/t04_brand4.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:void(0)">
+                        <img src="../img/t04_brand5.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:void(0)">
+                        <img src="../img/t04_brand5.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="navigation">
+            <div class="item">
+                <div class="button-prev btn"></div>
+            </div>
+            <div class="item">
+                <div class="button-next btn"></div>
+            </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="vline line1"></div>
+    <div class="vline line2"></div>
+    <div class="vline line3"></div>
+</div>
+<script>
+    (function() {
+        var into_logo_Swiper = new Swiper(".interior01-template-04 .t4_swiper", {
+            slidesPerView: 1,
+            spaceBetween: 50,
+            speed: 1000,
+            autoplay: {
+                delay: 3000,
+            },
+            navigation: {
+                nextEl: ".interior01-template-04 .button-next",
+                prevEl: ".interior01-template-04 .button-prev",
+            },
+            pagination: {
+                el: '.interior01-template-04 .swiper-pagination',
+                clickable: true
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 50,
+                },
+                1500: {
+                    slidesPerView: 5,
+                    spaceBetween: 50,
+                }
+            },
+        });
+        let into = document.querySelector('.interior01-template-04 .into_logo')
+        let swiper = document.querySelectorAll('.interior01-template-04 .swiper-slide')
+        let navigation = document.querySelector('.interior01-template-04 .navigation')
+        let pagination = document.querySelectorAll('.interior01-template-04 .swiper-pagination-bullet')
+
+        swiper.forEach((val) => {
+            if (swiper.length < 6 && window.innerWidth > 1500) {
+                navigation.style.display = 'none'
+                into.classList.add('center')
+            }
+            if (swiper.length < 5 && window.innerWidth > 767 && window.innerWidth < 1500) {
+                navigation.style.display = 'none'
+                into.classList.add('center')
+            }
+        })
+        pagination.forEach((val) => {
+            if (pagination.length == 1) {
+                val.style.display = 'none'
+            }
+        })
+
+        let t4 = gsap.timeline()
+        t4
+            .from('.interior01-template-04 .swiper-slide', {
+                stagger: {
+                    each: 0.2,
+                    from: 'left',
+                    ease: 'ease'
+                },
+                y: 100,
+                opacity: 0,
+                rotation: 0.01
+            })
+            .fromTo('.interior01-template-04 .navigation', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: "ease",
+                duration: 1.2,
+            }, 0)
+            .fromTo('.interior01-template-04 .swiper-pagination', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: "ease",
+                duration: 1.2,
+            }, 0.1)
+        ScrollTrigger.create({
+            animation: t4,
+            trigger: '.interior01-template-04',
+            toggleActions: 'play complete restart reset',
+            start: 'top 80%',
+        })
+    })()
+</script>
+
+<link rel="stylesheet" href="./css/05.css">
+<div class="interior01-template-05">
+    <!-- 背景 size 1920*1260 -->
+    <img src="../img/bg5.jpeg" alt="" class="bg">
+    <div class="swiper-container t5_swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <!-- 輪播圖片 size 1730*960 -->
+                <img src="../img/t05_img1.jpeg" class="img" />
+                <div class="text_wrap">
+                    <div class="title">
+                        <p>Commercial SPACE<br>SS - 2018</p>
+                    </div>
+                    <div class="text_item">
+                        <div class="item active">一凜拉麵 興大店</div>
+                        <div class="item">商業空間</div>
+                        <div class="item">
+                            <span>2018</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide_wrap">
+                    <div class="text">
+                        <div class="date_item">
+                            <div>商業空間/</div>
+                            <div>2018</div>
+                        </div>
+                        <span>一凜拉麵 興大店</span>
+                    </div>
+                    <img src="https://picsum.photos/1730/960/?random=1" alt="" class="img">
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/1730/960/?random=1" alt="" class="img">
+                <div class="text_wrap">
+                    <div class="title">
+                        <p>Commercial SPACE<br>SS - 2020</p>
+                    </div>
+                    <div class="text_item">
+                        <div class="item active">台北三重 - 陸江</div>
+                        <div class="item">住宅規劃</div>
+                        <div class="item">
+                            <span>2020</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide_wrap">
+                    <div class="text">
+                        <div class="date_item">
+                            <div>住宅規劃/</div>
+                            <div>2020</div>
+                        </div>
+                        <span>台北三重 - 陸江</span>
+
+                    </div>
+                    <img src="../img/t05_img1.jpeg" class="img" />
+
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="../img/t05_img1.jpeg" class="img" />
+                <div class="text_wrap">
+                    <div class="title">
+                        <p>Commercial SPACE<br>SS - 2022</p>
+                    </div>
+                    <div class="text_item">
+                        <div class="item active">台北三重 - 左鵝</div>
+                        <div class="item">飯店規劃</div>
+                        <div class="item">
+                            <span>2022</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide_wrap">
+                    <div class="text">
+                        <div class="date_item">
+                            <div>飯店規劃/</div>
+                            <div>2022</div>
+                        </div>
+                        <span>台北三重 - 左鵝</span>
+
+                    </div>
+                    <img src="https://picsum.photos/1730/960/?random=1" alt="" class="img">
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+
+    </div>
+</div>
+</div>
+<script>
+    (function() {
+        var swiper5 = new Swiper('.interior01-template-05 .t5_swiper', {
+            effect: 'fade',
+            speed: 1000,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+            },
+            spaceBetween: 0,
+            pagination: {
+                el: ".interior01-template-05 .swiper-pagination",
+                type: "progressbar",
+            },
+        })
+        if (swiper5.slides.length <= 3) {
+            swiper5.destroy();
+
+        }
+        let t5 = gsap.timeline()
+        t5.fromTo('.interior01-template-05 .swiper-slide', {
+                opacity: 0
+            }, {
+                opacity: 1,
+                ease: "ease",
+                duration: 1.2,
+            }, 0)
+            .fromTo('.interior01-template-05 .text_wrap', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: 'ease',
+                duration: 1.2
+            }, 0.3)
+            .fromTo('.interior01-template-05 .slide_wrap', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: 'ease',
+                duration: 1.2
+            }, 0.4)
+            .fromTo('.interior01-template-05 .swiper-pagination', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: 'ease',
+                duration: 1.2
+            }, 0.5)
+        ScrollTrigger.create({
+            animation: t5,
+            trigger: '.interior01-template-05',
+            toggleActions: 'play complete restart reset',
+            start: 'top 80%',
+        })
+    })()
+</script>
+
+<link rel="stylesheet" href="./css/06.css">
+<div class="interior01-template-06">
+    <div class="left">
+        <div class="img_wrap">
+            <!-- 背景 size 910*545 -->
+            <img src="../img/bg6.jpeg" alt="" class="img">
+        </div>
+        <div class="text_wrap">
+            <div class="text_item">
+                <div class="title">
+                    item
+                </div>
+                <div class="num" data-num="64">64</div>
+                <div class="box">
+                    <span>成功的項目</span>
+                    <div class="icon"></div>
+                </div>
+            </div>
+            <div class="text_item">
+                <div class="title">
+                    time
+                </div>
+                <div class="num" data-num="23">23</div>
+                <div class="box">
+                    <span>花了工作時間</span>
+                    <div class="icon"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="swiper-container t6_swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slide_wrap">
+                    <div class="title">
+                        Customer Feedback
+                    </div>
+                    <div class="text">
+                        客戶回饋
+                    </div>
+                    <p>我們的客戶將我們描述為一個顧問團<br>隊，通過打造一流的用戶體驗來創建<br>出色的設計。</p>
+                    <a class="more_btn" href="javascript:void(0)">了解更多 <div class="icon"></div></a>
+                </div>
+                <div class="swiper-slide slide_wrap">
+                    <div class="title">
+                        Customer Feedback
+                    </div>
+                    <div class="text">
+                        客戶回饋
+                    </div>
+                    <p>我們的客戶將我們描述為一個顧問團<br>隊，通過打造一流的用戶體驗來創建<br>出色的設計。</p>
+                    <a class="more_btn" href="javascript:void(0)">了解更多 <div class="icon"></div></a>
+                </div>
+            </div>
+            <div class="navigation">
+                <div class="line"></div>
+                <div class="item">
+                    <div class="button-prev btn"></div>
+                </div>
+                <div class="item">
+                    <div class="button-next btn"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="circle_wrap">
+        <div class="cir_2"></div>
+        <div class="cir_1"></div>
+    </div>
+</div>
+<script>
+    (function() {
+        var swiper6 = new Swiper('.interior01-template-06 .right .t6_swiper', {
+            speed: 1000,
+            autoplay: {
+                delay: 3000,
+            },
+            navigation: {
+                nextEl: ".interior01-template-06 .button-next",
+                prevEl: ".interior01-template-06 .button-prev",
+                clickable: true
+            },
+        })
+        var navigation = document.querySelector('.interior01-template-06 .navigation')
+        if (swiper6.slides.length < 2) {
+            swiper6.destroy();
+            navigation.style.display = 'none'
+        }
+        let t6 = gsap.timeline()
+        t6
+            .fromTo('.interior01-template-06 .left .img_wrap .img', {
+                x: -100,
+                opacity: 0
+            }, {
+                x: 0,
+                opacity: 1,
+                ease: 'ease',
+                duration: 1.2,
+            }, 0)
+            .fromTo('.interior01-template-06 .left .text_wrap', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: "ease",
+                duration: 1.2,
+            }, 0.3)
+            .fromTo('.interior01-template-06 .right .navigation', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: "ease",
+                duration: 1.2,
+            }, 0)
+            .fromTo('.interior01-template-06 .right .slide_wrap .title', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: 'ease',
+                duration: 1.2
+            }, 0.3)
+            .fromTo('.interior01-template-06 .right .slide_wrap .text', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: 'ease',
+                duration: 1.2
+            }, 0.3)
+            .fromTo('.interior01-template-06 .right .slide_wrap p', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: 'ease',
+                duration: 1.2
+            }, 0.4)
+            .fromTo('.interior01-template-06 .right .slide_wrap .more_btn', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: 'ease',
+                duration: 1.2
+            }, 0.5)
+
+        ScrollTrigger.create({
+            animation: t6,
+            trigger: '.interior01-template-06',
+            toggleActions: 'play complete restart reset',
+            start: 'top 80%',
+        })
+        let t6_move = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.interior01-template-06',
+                toggleActions: 'play complete restart reset',
+                scrub: true,
+                end: '90%',
+
+            }
+        })
+        t6_move.fromTo('.interior01-template-06 .circle_wrap', {
+            y: -100
+        }, {
+            y: 0,
+            ease: 'ease'
+        }, 0)
+        var t6_time = 0;
+        if ($(".interior01-template-06").offset().top < 300) {
+            t6_time = 1;
+            num_swiper_hote01_06();
+        }
+        $(window).scroll(function() {
+            var window_w = $(window).width();
+            offsetTop = $(window).scrollTop();
+
+            if ($(".interior01-template-06").offset().top < offsetTop + $(window).height() / 2 && t6_time == 0) {
+                t6_time = 1;
+                num_swiper_hote01_06();
+            }
+
+        });
+
+        function num_swiper_hote01_06() {
+            $(".interior01-template-06 .left .text_wrap .text_item .num").each(function() {
+                var $this = $(this);
+                var datanumCounter = $this.attr("data-num") - 100;
+                if (datanumCounter < 0) datanumCounter = 0;
+                jQuery({
+                    Counter: datanumCounter
+                }).animate({
+                    Counter: $this.attr("data-num")
+                }, {
+                    duration: 4000,
+                    easing: 'swing',
+                    step: function() {
+                        $this.text(Math.ceil(this.Counter));
+                    }
+                });
+            });
+        }
+    })()
+</script>
+
+<link rel="stylesheet" href="./css/07.css">
+<div class="interior01-template-07">
+    <!-- 背景 size 1920*235 -->
+    <!-- <img src="https://picsum.photos/1920/235/?random=1" alt="" class="bg"> -->
+    <!-- 手機背景 size 700*1200 -->
+    <!-- <img src="https://picsum.photos/700/1200/?random=1" alt="" class="bg_mobile"> -->
+    <div class="into_logo">
+        <div class="swiper-container t7_swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="javascript:void(0)">
+                        <!-- brand size 75*75 -->
+                        <img class="img" src="../img/t07_brand1.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:void(0)">
+                        <img class="img" src="../img/t07_brand2.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:void(0)">
+                        <img class="img" src="../img/t07_brand3.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:void(0)">
+                        <img class="img" src="../img/t07_brand4.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:void(0)">
+                        <img class="img" src="../img/t07_brand5.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:void(0)">
+                        <img class="img" src="../img/t07_brand6.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:void(0)">
+                        <img class="img" src="../img/t07_brand1.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:void(0)">
+                        <img class="img" src="../img/t07_brand2.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:void(0)">
+                        <img class="img" src="../img/t07_brand3.png" alt="">
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<script>
+    (function() {
+        var swiper7 = new Swiper('.interior01-template-07 .t7_swiper', {
+            slidesPerView: 7,
+            spaceBetween: 10,
+            speed: 1000,
+            autoplay: {
+                delay: 3000,
+            },
+            pagination: {
+                el: '.interior01-template-07 .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                },
+                1100: {
+                    slidesPerView: 5,
+                    spaceBetween: 10,
+                },
+                1500: {
+                    slidesPerView: 7,
+                    spaceBetween: 10,
+                },
+            },
+
+        })
+        let into = document.querySelector('.interior01-template-07 .into_logo')
+        let swiper = document.querySelectorAll('.interior01-template-07 .swiper-slide')
+        let pagination = document.querySelectorAll('.interior01-template-07 .swiper-pagination-bullet')
+
+        swiper.forEach((val) => {
+            if (swiper.length < 7 && window.innerWidth > 1500) {
+                into.classList.add('center')
+            }
+            if (swiper.length < 5 && window.innerWidth > 1100 && window.innerWidth < 1500) {
+                into.classList.add('center')
+            }
+            if (swiper.length < 4 && window.innerWidth > 767 && window.innerWidth < 1100) {
+                into.classList.add('center')
+            }
+            if (swiper.length < 2 && window.innerWidth < 767) {
+                into.classList.add('center')
+            }
+        })
+        pagination.forEach(val => {
+            if (pagination.length == 1) {
+                val.style.display = 'none'
+            }
+        })
+        let t7 = gsap.timeline()
+
+        t7.from('.interior01-template-07 .swiper-slide', {
+                stagger: {
+                    each: 0.2,
+                    from: 'left',
+                    ease: 'ease'
+                },
+                y: 100,
+                opacity: 0,
+                rotation: 0.01
+            })
+            .fromTo('.interior01-template-07 .swiper-pagination', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: 'ease',
+                duration: 1.2
+            }, 0.1)
+        ScrollTrigger.create({
+            animation: t7,
+            trigger: '.interior01-template-07',
+            toggleActions: 'play complete restart reset',
+            start: 'top 80%',
+        })
+    })()
+</script>
+
+<link rel="stylesheet" href="./css/08.css">
+<div class="interior01-template-08">
+    <div class="left">
+        <div class="title">Recent<br>NEWS</div>
+        <div class="text">最新消息</div>
+    </div>
+    <div class="right">
+        <div class="wrap">
+            <div class="title_item">
+                <div class="num">01</div>
+                <div class="title">商業空間-金鐘燒臘鋪</div>
+            </div>
+            <div class="text_wrap">
+                <div class="item">
+                    <div class="date">2010/12/08</div>
+                    <div class="text">商業空間規劃</div>
+                </div>
+                <a class="more_btn" href="javascript:void(0)">了解更多 <div class="icon"></div></a>
+            </div>
+            <div class="img_item">
+                <!-- 圖片 size 530*511 -->
+                <img src="../img/t08_img1.png" alt="">
+            </div>
+        </div>
+        <div class="wrap ">
+            <div class="box">
+                <div class="title_item">
+                    <div class="num">02</div>
+                    <div class="title">商業空間-金鐘燒臘鋪</div>
+                </div>
+                <div class="text_wrap">
+                    <div class="item">
+                        <div class="date">2010/12/08</div>
+                        <div class="text">商業空間規劃</div>
+                    </div>
+                    <a class="more_btn" href="javascript:void(0)">了解更多 <div class="icon"></div></a>
+                </div>
+                <div class="img_item ">
+                    <img src="../img/t08_img1.png" alt="">
+                </div>
+            </div>
+            <div class="box active">
+                <div class="title_item">
+                    <div class="num">03</div>
+                    <div class="title">商業空間-金鐘燒臘鋪</div>
+                </div>
+                <div class="text_wrap">
+                    <div class="item">
+                        <div class="date">2010/12/08</div>
+                        <div class="text">商業空間規劃</div>
+                    </div>
+                    <a class="more_btn" href="javascript:void(0)">了解更多 <div class="icon"></div></a>
+                </div>
+                <div class="img_item">
+                    <img src="../img/t08_img1.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="title_item">
+                <div class="num">04</div>
+                <div class="title">商業空間-金鐘燒臘鋪</div>
+            </div>
+            <div class="text_wrap">
+                <div class="item">
+                    <div class="date">2010/12/08</div>
+                    <div class="text">商業空間規劃</div>
+                </div>
+                <a class="more_btn" href="javascript:void(0)">了解更多 <div class="icon"></div></a>
+            </div>
+            <div class="img_item">
+                <img src="../img/t08_img1.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="mobile_swiper">
+        <div class="swiper-container t8_swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="wrap">
+                        <div class="title_item">
+                            <div class="num">01</div>
+                            <div class="title">商業空間-金鐘燒臘鋪</div>
+                        </div>
+                        <div class="text_wrap">
+                            <div class="item">
+                                <div class="date">2010/12/08</div>
+                                <div class="text">商業空間規劃</div>
+                            </div>
+                            <a class="more_btn" href="javascript:void(0)">了解更多 <div class="icon"></div></a>
+                        </div>
+                        <div class="img_item">
+                            <img src="../img/t08_img1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="wrap">
+                        <div class="title_item">
+                            <div class="num">02</div>
+                            <div class="title">商業空間-金鐘燒臘鋪</div>
+                        </div>
+                        <div class="text_wrap">
+                            <div class="item">
+                                <div class="date">2010/12/08</div>
+                                <div class="text">商業空間規劃</div>
+                            </div>
+                            <a class="more_btn" href="javascript:void(0)">了解更多 <div class="icon"></div></a>
+                        </div>
+                        <div class="img_item">
+                            <img src="../img/t08_img1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="wrap">
+                        <div class="title_item">
+                            <div class="num">03</div>
+                            <div class="title">商業空間-金鐘燒臘鋪</div>
+                        </div>
+                        <div class="text_wrap">
+                            <div class="item">
+                                <div class="date">2010/12/08</div>
+                                <div class="text">商業空間規劃</div>
+                            </div>
+                            <a class="more_btn" href="javascript:void(0)">了解更多 <div class="icon"></div></a>
+                        </div>
+                        <div class="img_item">
+                            <img src="../img/t08_img1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="wrap">
+                        <div class="title_item">
+                            <div class="num">04</div>
+                            <div class="title">商業空間-金鐘燒臘鋪</div>
+                        </div>
+                        <div class="text_wrap">
+                            <div class="item">
+                                <div class="date">2010/12/08</div>
+                                <div class="text">商業空間規劃</div>
+                            </div>
+                            <a class="more_btn" href="javascript:void(0)">了解更多 <div class="icon"></div></a>
+                        </div>
+                        <div class="img_item">
+                            <img src="../img/t08_img1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+
+    </div>
+    <div class="circle_wrap">
+        <div class="cir_2"></div>
+        <div class="cir_1"></div>
+    </div>
+</div>
+<script>
+    (function() {
+        let boxs = document.querySelectorAll('.right .box')
+
+        function fucClick() {
+            boxs.forEach(val => {
+                if (val !== this) {
+                    val.classList.add('active')
+                    this.classList.remove('active')
+                }
+            })
+        }
+        boxs.forEach(box => box.addEventListener('click', fucClick))
+        var swiper8 = new Swiper('.interior01-template-08 .mobile_swiper .t8_swiper', {
+            speed: 1000,
+            autoplay: {
+                delay: 3000,
+            },
+            spaceBetween: 30,
+            slidesPerView: 1,
+            pagination: {
+                type: 'bullets',
+                el: '.interior01-template-08 .swiper-pagination',
+                clickable: true,
+            },
+        })
+        let t8 = gsap.timeline()
+        t8.fromTo('.interior01-template-08 .left', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: "ease",
+                duration: 1.2,
+            }, 0)
+            .from('.interior01-template-08 .right .wrap', {
+                stagger: {
+                    each: 0.2,
+                    from: 'left',
+                    ease: 'ease'
+                },
+                y: 100,
+                opacity: 0,
+                duration: 0.6
+            }, 0.3)
+        ScrollTrigger.create({
+            animation: t8,
+            trigger: '.interior01-template-08',
+            toggleActions: 'play complete restart reset',
+            start: 'top 80%',
+        })
+        let t8_move = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.interior01-template-08',
+                toggleActions: 'play complete restart reset',
+                scrub: true,
+                end: '50%',
+
+
+            }
+        })
+        t8_move.fromTo('.interior01-template-08 .circle_wrap', {
+            y: -50
+        }, {
+            y: 0,
+            ease: 'ease'
+        }, 0)
+        t8mobile = gsap.timeline()
+        t8mobile
+            .fromTo('.interior01-template-08 .mobile_swiper .title_item', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: "ease",
+                duration: 1.2,
+            }, 0.3)
+            .fromTo('.interior01-template-08 .mobile_swiper .text_wrap', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: "ease",
+                duration: 1.2,
+            }, 0.4)
+            .fromTo('.interior01-template-08 .mobile_swiper .img_item', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: "ease",
+                duration: 1.2,
+            }, 0.5)
+            .fromTo('.interior01-template-08 .mobile_swiper .swiper-pagination', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: "ease",
+                duration: 1.2,
+            }, 0.6)
+        ScrollTrigger.create({
+            animation: t8mobile,
+            trigger: '.interior01-template-08',
+            toggleActions: 'play complete restart reset',
+            start: 'top 80%',
+        })
+    })()
+</script>
+
+<link rel="stylesheet" href="./css/09.css">
+<div class="interior01-template-09 ">
+    <div class="text_wrap">
+        <div class="text_item">
+            <div class="title">
+                Our<br>DOWNLOAD
+            </div>
+            <div class="text">下載專區</div>
+        </div>
+
+    </div>
+    <div class="swiper-container t9_swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide odd">
+                <div class="circle_wrap">
+                    <div class="wrap">
+                        <div class="num">01</div>
+                        <div class="text">商業空間-金鐘燒臘鋪</div>
+                        <div class="download"></div>
+                    </div>
+                    <div class="cir_2"></div>
+                    <div class="cir_1"></div>
+                </div>
+            </div>
+            <div class="swiper-slide even">
+                <div class="circle_wrap">
+                    <div class="wrap">
+                        <div class="num">02</div>
+                        <div class="text">商業空間-金鐘燒臘鋪</div>
+                        <div class="download"></div>
+                    </div>
+                    <div class="cir_1"></div>
+                    <div class="cir_3"></div>
+                </div>
+            </div>
+            <div class="swiper-slide odd">
+                <div class="circle_wrap">
+                    <div class="wrap">
+                        <div class="num">01</div>
+                        <div class="text">商業空間-金鐘燒臘鋪</div>
+                        <div class="download"></div>
+                    </div>
+                    <div class="cir_2"></div>
+                    <div class="cir_1"></div>
+                </div>
+            </div>
+            <div class="swiper-slide even">
+                <div class="circle_wrap">
+                    <div class="wrap">
+                        <div class="num">02</div>
+                        <div class="text">商業空間-金鐘燒臘鋪</div>
+                        <div class="download"></div>
+                    </div>
+                    <div class="cir_1"></div>
+                    <div class="cir_3"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <div class="line"></div>
+            <div class="item">
+                <div class="button-prev btn"></div>
+            </div>
+            <div class="item">
+                <div class="button-next btn"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="img_wrap">
+        <!-- 底下圖 size 365*240 -->
+
+        <img src="../img/t09_img.png" alt="">
+    </div>
+    <div class="img_wrap2">
+        <div class="cir_2"></div>
+    </div>
+</div>
+<script>
+    (function() {
+        var swiper9 = new Swiper('.interior01-template-09 .t9_swiper', {
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+            speed: 1000,
+            autoplay: {
+                delay: 3000,
+            },
+            navigation: {
+                nextEl: ".interior01-template-09 .button-next",
+                prevEl: ".interior01-template-09 .button-prev",
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+
+
+            }
+        })
+        var navigation = document.querySelector('.interior01-template-09 .navigation')
+        if (swiper9.slides.length < 3 && window.innerWidth > 700) {
+            navigation.style.display = 'none'
+        }
+        if (swiper9.slides.length < 2 && window.innerWidth < 700) {
+            navigation.style.display = 'none'
+        }
+        let t9 = gsap.timeline()
+        t9.fromTo('.interior01-template-09 .text_wrap', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: "ease",
+                duration: 1.2,
+            }, 0)
+            .fromTo('.interior01-template-09 .navigation', {
+                y: 100,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                ease: "ease",
+                duration: 1.2,
+            }, 0)
+            .from('.interior01-template-09 .swiper-slide', {
+                stagger: {
+                    each: 0.2,
+                    from: 'left',
+                    ease: 'ease'
+                },
+                y: 100,
+                opacity: 0,
+                rotation: 0.01,
+                duration: 1.2
+            }, 0.3)
+        ScrollTrigger.create({
+            animation: t9,
+            trigger: '.interior01-template-09',
+            toggleActions: 'play complete restart reset',
+            start: 'top 80%',
+        })
+        let t9_move = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.interior01-template-09',
+                toggleActions: 'play complete restart reset',
+                scrub: true,
+                end: '50%',
+            }
+        })
+        t9_move.fromTo('.interior01-template-09 .img_wrap', {
+                y: -200
+            }, {
+                y: 0,
+                ease: 'ease'
+            }, 0)
+            .fromTo('.interior01-template-09 .img_wrap2', {
+                y: -200
+            }, {
+                y: 0,
+                ease: 'ease'
+            }, 0)
+    })()
+</script>
+
+<link rel="stylesheet" href="./css/10.css">
+<div class="interior01-template-10" style="background-image: url('../img/t10_bg.png');">
+    <!-- 背景 size 1920*1075 -->
+    <!-- <img src="../img/t10_bg.png" alt="" class="bg"> -->
+    <!-- 手機背景 size 700*1200 -->
+    <img src="../img/ph_t10_bg.jpeg" alt="" class="bg_mobile">
+    <div class="container text_wrap">
+        <!-- 如果text_l隱藏text_wrap加flex_end -->
+        <div class="left">
+            <div class="title">RX Inerior Design</div>
+            <div class="text_item">
+                <div class="text">睿壐設計總監</div>
+                <div class="line"></div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="title">陳睿騏</div>
+            <p>建築師必定是偉大的雕塑家和畫家<br> 如果他不是雕塑家和畫家，他只能算個建造者
+            </p>
+            <a class="more_btn" href="javascript:void(0)">了解更多 <div class="icon"></div></a>
+        </div>
+    </div>
+    <div class="line_wrap">
+        <div class="line1"></div>
+        <div class="line2"></div>
+    </div>
+</div>
+<script>
+    let t10 = gsap.timeline()
+    t10.fromTo('.interior01-template-10 .text_wrap .left', {
+            y: 100,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            ease: "ease",
+            duration: 1.2,
+        }, 0)
+        .fromTo('.interior01-template-10 .text_wrap .right', {
+            y: 100,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            ease: "ease",
+            duration: 1.2,
+        }, 0.3)
+
+    ScrollTrigger.create({
+        animation: t10,
+        trigger: '.interior01-template-10',
+        toggleActions: 'play complete restart reset',
+        start: 'top 80%',
+    })
+    let t10_move = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.interior01-template-10',
+            toggleActions: 'play complete restart reset',
+            scrub: true,
+            end: '50%',
+
+
+        }
+    })
+    t10_move.fromTo('.interior01-template-10 .line1', {
+            y: -200
+        }, {
+            y: 0,
+            ease: 'ease'
+        }, 0)
+        .fromTo('.interior01-template-10 .line2', {
+            y: -200
+        }, {
+            y: 0,
+            ease: 'ease'
+        }, 0)
+</script>
+
+<link rel="stylesheet" href="./css/11.css">
+<div class="interior01-template-11" style="background-image: url('../img/t11_bg.png');">
+    <!-- 背景 size 1920*850 -->
+    <!-- <img src="../img/t11_bg.png" alt="" class="bg"> -->
+    <img src="../img/ph_t11_bg.jpeg" alt="" class="bg_mobile">
+    <div class="container">
+        <div class="text_wrap">
+            <div class="line"></div>
+            <div class="title">Join <br>RX Interior<br> Design</div>
+            <span>加入睿壐設計</span>
+            <p>尋找充滿服物熱忱，打破傳統思維，這樣的員工我<br>們堅信和我們有著相同的理念和合作藍圖。</p>
+            <a class="more_btn" href="javascript:void(0)">了解更多 <div class="icon arr"></div></a>
+            <!-- 手機背景size 700*1200 -->
+        </div>
+        <div class="cir_3"></div>
+        <div class="big_img">
+            <!-- 右圖 size 625*480 -->
+            <img src="../img/t11_right.png" alt="" class="img">
+        </div>
+    </div>
+</div>
+<script>
+    let t11 = gsap.timeline()
+    t11.fromTo('.interior01-template-11 .text_wrap .line', {
+            y: 100,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            ease: "ease",
+            duration: 1.2,
+        }, 0)
+        .fromTo('.interior01-template-11 .text_wrap .title', {
+            y: 100,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            ease: "ease",
+            duration: 1.2,
+        }, 0.1)
+        .fromTo('.interior01-template-11 .text_wrap span', {
+            y: 100,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            ease: "ease",
+            duration: 1.2,
+        }, 0.2)
+        .fromTo('.interior01-template-11 .text_wrap p', {
+            y: 100,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            ease: "ease",
+            duration: 1.2,
+        }, 0.3)
+        .fromTo('.interior01-template-11 .text_wrap .more_btn', {
+            y: 100,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            ease: "ease",
+            duration: 1.2,
+        }, 0.4)
+
+    ScrollTrigger.create({
+        animation: t11,
+        trigger: '.interior01-template-11',
+        toggleActions: 'play complete restart reset',
+        start: 'top 80%',
+    })
+    let t11_move = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.interior01-template-11',
+            toggleActions: 'play complete restart reset',
+            scrub: true,
+            end: '50%',
+
+
+        }
+    })
+    t11_move.fromTo('.interior01-template-11 .cir_3', {
+            y: -200
+        }, {
+            y: 0,
+            ease: 'ease'
+        }, 0)
+        .fromTo('.interior01-template-11 .big_img', {
+            y: -100
+        }, {
+            y: 0,
+            ease: 'ease'
+        }, 0)
+</script>
+
+  </body>
+</html>
